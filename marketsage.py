@@ -2,7 +2,6 @@
 
 import yfinance as yf
 import pandas as pd
-pip install yfinance pandas reportlab --quiet
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib import colors
