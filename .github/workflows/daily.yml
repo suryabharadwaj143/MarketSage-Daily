@@ -24,4 +24,6 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run MarketSage Bot
-      run: python marketsage.py
+      run: |
+        ls -la
+        python marketsage.py
