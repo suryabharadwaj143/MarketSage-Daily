@@ -1,22 +1,38 @@
-# MarketSage - Daily Stock Scanner Bot 🧠📊
+# 📈 MarketSage - Daily Stock Market Scanner & Telegram Bot 🧠📊
 
-MarketSage is a fully automated AI-powered bot that:
+MarketSage is an AI-powered stock analysis bot that scans the entire Nifty 500 daily and sends a clean PDF report to Telegram at 5:30 PM IST — completely automated using GitHub Actions.
 
-- 📈 Scans all Nifty 500 stocks (₹5000Cr+ Market Cap)
-- 🧠 Detects bullish signals using SMA50 > SMA200
-- 🔔 Flags All Time High stocks
-- 🧾 Sends a clean PDF report daily at 5:30 PM IST to Telegram
-- 🛠 Built using Python, GitHub Actions & yFinance
+## 🚀 Features
 
-## What's Inside?
-- `marketsage.py` - Main scanning script
-- `requirements.txt` - Required Python libraries
-- `.github/workflows/daily.yml` - Automation script (runs daily)
+- 📊 **Scans all Nifty 500 stocks**
+- 💰 **Filters fundamentally strong stocks**
+  - Technical signal: `SMA50 > SMA200`
+  - Optional: All-Time High detection
+- 📈 **Generates Buy Signals**
+- 📄 **Creates PDF Report** with a table view
+- 🤖 **Sends PDF to Telegram** daily via Bot
+- ⚙️ **Fully automated with GitHub Actions**
 
-## 👨‍💻 How It Works
-1. GitHub Actions runs the script every day
-2. Analyzes stocks based on trend and fundamentals
-3. Sends you a neat summary as PDF via Telegram 📬
+## 📌 Sample Output
 
-## Author
+| Ticker       | SMA50  | SMA200 | Latest Close | All Time High | Signal |
+|--------------|--------|--------|---------------|----------------|--------|
+| RELIANCE.NS  | 2710   | 2650   | 2750          | Yes            | BUY    |
+
+## 🛠️ Tech Stack
+
+- Python
+- yFinance
+- Pandas
+- ReportLab (PDF)
+- GitHub Actions (CI/CD)
+- Telegram Bot API
+
+## 📦 Installation
+
+```bash
+pip install -r requirements.txt
+python marketsage.py
+
+## ✍️ **Author**
 Made with ❤️ by [@suryabharadwaj143](https://github.com/suryabharadwaj143)
