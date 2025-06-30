@@ -168,5 +168,4 @@ if os.path.exists("marketsage_report.pdf"):
     send_pdf_to_telegram("marketsage_report.pdf")
 else:
     print("❌ PDF generation failed!")
-else:
-    print("❌ PDF File Missing – Something went wrong!")
+
