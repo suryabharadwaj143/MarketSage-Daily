@@ -163,14 +163,17 @@ create_pdf(index_summary, sector_data, top_gainers, top_losers, buy_signals)
 # === Step 7: Telegram Send ===
 def send_pdf_to_telegram(file_path):
     url = f"https://api.telegram.org/bot{bot_token}/sendDocument"
+    if not os.path.exists(file_path):
+        print("❌ PDF not found!")
+        return
     with open(file_path, 'rb') as f:
         files = {'document': f}
         data = {'chat_id': chat_id, 'caption': "\U0001F4C8 MarketSage Daily Report is here!"}
         response = requests.post(url, files=files, data=data)
-        print("✅ Sent PDF to Telegram")
+        print("📨 Telegram response:", response.status_code, response.text)
+        if response.status_code == 200:
+            print("✅ PDF sent successfully!")
+        else:
+            print("❌ Telegram send failed.")
 
-if os.path.exists("marketsage_report.pdf"):
-    send_pdf_to_telegram("marketsage_report.pdf")
-else:
-    print("❌ PDF generation failed!")
 
