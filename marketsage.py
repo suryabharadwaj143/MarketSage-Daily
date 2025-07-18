@@ -10,10 +10,15 @@ import requests
 from tqdm import tqdm
 import time
 import os
+from dotenv import load_dotenv
+
 
 # === Step 1: Telegram Bot Message ===
-bot_token = '7614155863:AAF3gSot7NRJCsAPfI6w369lAEd23cClj5Q'
-chat_id = '766461436'
+load_dotenv()
+
+bot_token = os.getenv("BOT_TOKEN")
+chat_id = os.getenv("CHAT_ID")
+
 
 message = ("\U0001F680 Hello! MarketSage Daily Report is being generated. Please wait...")
 requests.get(f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={message}")
