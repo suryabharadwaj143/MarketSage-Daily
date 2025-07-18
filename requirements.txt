@@ -8,3 +8,4 @@ python-telegram-bot
 python-dotenv
 yfinance
 fpdf
+reportlab
