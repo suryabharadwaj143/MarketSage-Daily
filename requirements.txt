@@ -1,5 +1,10 @@
-yfinance
 pandas
-reportlab
+numpy
+matplotlib
+plotly
 requests
-tqdm
+beautifulsoup4
+python-telegram-bot
+python-dotenv
+yfinance
+fpdf
