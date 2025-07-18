@@ -10,14 +10,14 @@ import requests
 from tqdm import tqdm
 import time
 import os
-from dotenv import load_dotenv
+
 
 
 # === Step 1: Telegram Bot Message ===
-load_dotenv()
 
-bot_token = os.getenv("BOT_TOKEN")
-chat_id = os.getenv("CHAT_ID")
+TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+
 
 
 message = ("\U0001F680 Hello! MarketSage Daily Report is being generated. Please wait...")
@@ -162,13 +162,13 @@ create_pdf(index_summary, sector_data, top_gainers, top_losers, buy_signals)
 
 # === Step 7: Telegram Send ===
 def send_pdf_to_telegram(file_path):
-    url = f"https://api.telegram.org/bot{bot_token}/sendDocument"
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
     if not os.path.exists(file_path):
         print("❌ PDF not found!")
         return
     with open(file_path, 'rb') as f:
         files = {'document': f}
-        data = {'chat_id': chat_id, 'caption': "\U0001F4C8 MarketSage Daily Report is here!"}
+        data = {'chat_id': TELEGRAM_CHAT_ID, 'caption': "\U0001F4C8 MarketSage Daily Report is here!"}
         response = requests.post(url, files=files, data=data)
         print("📨 Telegram response:", response.status_code, response.text)
         if response.status_code == 200:
