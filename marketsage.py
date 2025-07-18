@@ -175,7 +175,10 @@ def send_telegram_pdf():
         with open(PDF_FILE_PATH, "rb") as pdf_file:
             response = requests.post(
                 f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument",
-                data={"chat_id": TELEGRAM_CHAT_ID},
+                data={
+                    "chat_id": TELEGRAM_CHAT_ID,
+                    "caption": "📊 MarketSage Daily Report is here!"
+                },
                 files={"document": pdf_file}
             )
             print(f"Telegram Response Status: {response.status_code}")
@@ -184,6 +187,7 @@ def send_telegram_pdf():
             print("✅ PDF sent to Telegram successfully.")
     except Exception as e:
         print(f"❌ Error sending PDF to Telegram: {e}")
+
 
 # Call the function
 send_telegram_pdf()
