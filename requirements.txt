@@ -9,3 +9,4 @@ python-dotenv
 yfinance
 fpdf
 reportlab
+tqdm
