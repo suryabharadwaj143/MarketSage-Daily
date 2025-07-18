@@ -29,5 +29,9 @@ jobs:
 
       - name: Run MarketSage Bot
         run: |
-          ls -la
+          echo "=== Running MarketSage ==="
           python marketsage.py
+          echo "=== Checking files in directory ==="
+          ls -lh
+          echo "=== Checking PDF files ==="
+          find . -name "*.pdf"
