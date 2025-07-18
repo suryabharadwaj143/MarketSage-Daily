@@ -162,19 +162,31 @@ def create_pdf(index_summary, sector_data, gainers, losers, buy_data, filename="
 create_pdf(index_summary, sector_data, top_gainers, top_losers, buy_signals)
 
 # === Step 7: Telegram Send ===
-def send_pdf_to_telegram(file_path):
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
-    if not os.path.exists(file_path):
-        print("❌ PDF not found!")
-        return
-    with open(file_path, 'rb') as f:
-        files = {'document': f}
-        data = {'chat_id': TELEGRAM_CHAT_ID, 'caption': "\U0001F4C8 MarketSage Daily Report is here!"}
-        response = requests.post(url, files=files, data=data)
-        print("📨 Telegram response:", response.status_code, response.text)
-        if response.status_code == 200:
-            print("✅ PDF sent successfully!")
-        else:
-            print("❌ Telegram send failed.")
+import os
+import requests
+
+TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+PDF_FILE_PATH = "marketsage_report.pdf"
+
+def send_telegram_pdf():
+    print("=== Preparing to send PDF to Telegram ===")
+    try:
+        with open(PDF_FILE_PATH, "rb") as pdf_file:
+            response = requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument",
+                data={"chat_id": TELEGRAM_CHAT_ID},
+                files={"document": pdf_file}
+            )
+            print(f"Telegram Response Status: {response.status_code}")
+            print(f"Telegram Response: {response.text}")
+            response.raise_for_status()
+            print("✅ PDF sent to Telegram successfully.")
+    except Exception as e:
+        print(f"❌ Error sending PDF to Telegram: {e}")
+
+# Call the function
+send_telegram_pdf()
+
 
 
