@@ -21,7 +21,8 @@ TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 
 message = ("\U0001F680 Hello! MarketSage Daily Report is being generated. Please wait...")
-requests.get(f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={message}")
+requests.get(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage?chat_id={TELEGRAM_CHAT_ID}&text={message}")
+
 
 # === Step 2: Market Index Summary ===
 print("\n\U0001F4C8 Market Index Summary:")
