@@ -8,7 +8,7 @@ MarketSage is an AI-powered stock analysis bot that scans the entire Nifty 500 d
 - 💰 **Filters fundamentally strong stocks**
   - Technical signal: `SMA50 > SMA200`
   - Optional: All-Time High detection
-- 📈 **Generates Buy Signals**
+- 📈 **Generates SMA50 & SMA 200**
 - 📄 **Creates PDF Report** with a table view
 - 🤖 **Sends PDF to Telegram** daily via Bot
 - ⚙️ **Fully automated with GitHub Actions**
